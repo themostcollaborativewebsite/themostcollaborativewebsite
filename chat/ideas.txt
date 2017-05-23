@@ -1,0 +1,17 @@
+🌵 - Would be cool to set up a chat feature on the frontend!
+
+Just set up a little script to hit the Glitch API from this app's frontend to get info about itself. Maybe useful for that chat feature? Check out the object in the console. Current users on the project are in data.users
+
+
+I... may have just constructed a wormhole.
+
+ -- Woah (look at live frontend)
+
+Perhaps we should start collecting a visual history of this app? Not sure how much history Glitch is already collecting behind the scenes, but it'd be neat to be able to see how the app evolves overtime. Though, we might bump into proejct size limits quickly if we upload too many images to `assets`. "up to 512MB of assets storage" - https://glitch.com/faq
+ 
+  -- Could do regular github exports?
+  -- Tried to do this, but export isn't working
+    https://github.com/themostcollaborativewebsite/themostcollaborativewebsite
+  
+
+Shall we start @tagging ourselves in chats? Or do we like the anonymousness of it as-is?

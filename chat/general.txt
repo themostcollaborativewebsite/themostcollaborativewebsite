@@ -1,0 +1,33 @@
+<!--   Hey! I'd love to help ya come up with a name. What's the general idea for this app?   -->
+    <!-- Could be anything!-->
+<!--   Ah, so... is the idea that it'll be a massively collaborative app, that becomes whatever the group of people working on it feels like making?   -->
+    <!-- yep! -->
+<!--   Neato. _thinking_  -->
+<!--   OK, here's one idea: Megazord. Might be copyrighted... but. The idea of a bunch of power rangers combining their individual Zords
+      to create a Megazord that's more powerful than the sum of its parts... seems relevant. 
+
+& Maybe we take the Mega part and add something else to be original? + 1️⃣
+
+Yeah, dang: http://tmsearch.uspto.gov/bin/showfield?f=doc&state=4807:54u9io.2.43
+
+& I like "TYPED DRAWING" thank you patent and trademark office!
+
+Was this Glitch inspired by https://github.com/chaosbot/chaos ? Saw that on... maybe r/programming this morning.
+Yeah, here: https://www.reddit.com/r/programming/comments/6criij/chaos_a_social_coding_experiment_that/
+
+ & No, but very similar! haha, weird timely coicidences
+
+One of these two projects is going to lead to the singularity. I, for one, welcome our Glitch-born robot overlord.
+
+1:58 ET -- I have to jump on a call but please invite anyone to edit, edit link is in README.
+
+2:36 PM ET -- Seems we've reached the practical limitations of https://button.glitch.me 😆
+
+button.glitch.me has a bug: Anonymous users show up as `null`.
+
+👆 Maybe the project owners should ask for help on that :)
+
+Access requested.
+
+
+2:50 PM ET -- Setting up Browserify, as learned from https://glitch.com/edit/#!/browserify-middleware
