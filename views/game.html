@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The most collaborative website -- Chat</title>
+    <title>The most collaborative website -- Game</title>
     <meta name="description" content="A cool thing made with Glitch">
     <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
@@ -10,28 +10,19 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <div id="chat-container"> 
-      <form id="chat-form">
-        <input id="chat-user" type="text" placeholder="username" width="10">
-        <input id="chat-input" type="text" autofocus>
-        <button id="submit-chat" type="submit">submit</button>
-      </form>
-      <ul id="chats">
-      </ul>
+    <div id="game-container"> 
+      <div id="game-player">
+        
+      </div>
+
     </div>
     <div id="tail">✨</div>
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      window.urls = {
-        postMessage: '/chat/beta/new',
-        getMessages: '/chats-beta'
-      }
-    </script>
     <script src="/js/client.js"></script>
-    <script src="/js/chat-beta.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/game.js"></script>
   </body>
 </html>

@@ -12,7 +12,8 @@
   <body>
     <div id="chat-container"> 
       <form id="chat-form">
-        <input id="chat-input" type="text" autofocus/>
+        <input id="chat-user" type="text" placeholder="username" width="10">
+        <input id="chat-input" type="text" autofocus>
         <button id="submit-chat" type="submit">submit</button>
       </form>
       <ul id="chats">
@@ -23,6 +24,13 @@
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
+    <script>
+      window.urls = {
+        postMessage: '/chat/new',
+        getMessages: '/chats'
+      }
+    </script>
     <script src="/js/client.js"></script>
+    <script src="/js/chat.js"></script>
   </body>
 </html>

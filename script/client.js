@@ -10,13 +10,6 @@ var setUpMouseTail = require('./mousetail');
 var tail = document.getElementById("tail");
 setUpMouseTail(tail);
 
-// hack to make the chat js only load on chat pages
-// is there a better way to do this? er, I mean there's GOTTA be a better way to do this. Any ideas?
-if (window.location.href.indexOf("chat") != -1) {
-  var chat = require('./chat');
-  chat(); 
-}
-
 
 var axios = require('axios');
 
@@ -29,8 +22,7 @@ var glitchApiDomain = "https://api.glitch.com";
 
 // shall we get a little meta up in here?
 axios.get(glitchApiDomain + "/projects/" + glitchProjectName).then(function (response) {
-  window._data = response.data;
-  console.log(_data);
+  console.log(response.data);
 });
 
 $( document ).ready(function() {

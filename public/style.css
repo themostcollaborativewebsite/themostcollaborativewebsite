@@ -1,3 +1,4 @@
+
 /* styles */
 /* called by your view template */
 
@@ -92,4 +93,30 @@ ul#chats {
 li {
   border-bottom: 0.5px solid #d6d6d6;
   padding: 3px;
+}
+
+li:hover {
+  background-color: #fef4ff;
+}
+
+
+
+/* Game */
+
+#game-container {
+  background-color: #8ed892;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#game-player {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 5px;
 }

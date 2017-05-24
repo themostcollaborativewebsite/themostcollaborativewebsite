@@ -2,8 +2,8 @@
 
 
 console.log("Chat"); 
-// Might have been the missing semi colon
-// Seems to be working now
+
+var socket = window.io();
 
 (function getChats() {
   $.ajax({
@@ -39,6 +39,8 @@ console.log("Chat");
   });
 })();
 
+socket.on('new message', alert)
+
 if (localStorage.getItem('username' + location.path)) {
   $("#chat-user").val(localStorage.getItem('username' + location.path))
 }
@@ -50,7 +52,8 @@ $( "#chat-form" ).submit(function(event) {
   var data = { message: message, user: $("#chat-user").val() };
   localStorage.setItem('username' + location.path, data.user);
   $( "#chats" ).prepend("<li>" + message + "</li>");
-  $.ajax({
+  socket.emit('send message', data)
+    $.ajax({
     method: 'POST',
     url: window.urls.postMessage,
     data: data,
