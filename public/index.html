@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
+  <body class="home_page">
     <div class="colordancing page_border"></div>
     
     <main>
@@ -24,13 +24,19 @@
           </p>
           <p>
             <a href="https://glitch.com/edit/#!/join/41b49aa7-ae86-453e-b7f1-a9e13abfec83"
-               class="colordancing">Join the project on Glitch</a>
+               class="colordancing join_link">Join the project on Glitch</a>
           </p>
-          
-          <iframe id="wormhole"></iframe>
+          <p>
+            <a href="/chat" class="colordancing">Check out the chat!</a>
+          </p>
+          <!--  Apparently this wormhole (an iframe to the editor) was causing slowness.
+                See also https://glitch.com/edit/#!/the-most-collaborative-website?path=script/client.js:19:0  -->
+          <!--<iframe id="wormhole"></iframe>-->
           
         </div>
       </div>
+      
+      <div id="tail">✨</div>
       
     </main>
     

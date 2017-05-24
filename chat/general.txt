@@ -31,3 +31,15 @@ Access requested.
 
 
 2:50 PM ET -- Setting up Browserify, as learned from https://glitch.com/edit/#!/browserify-middleware
+
+3:23 ET -- Help request keeps disappearing? 
+  - seems to be working now, maybe because I was repeating questions?
+  
+@j-f1: why not use an extant chat solution (such as Gitter)? 
+
+ -- I like the idea of the chat existing within the app, but there are no rules!
+
+
+5/23   4:22 ET: Is this running very very slow for everyone else?
+      4:24 ET: Commented out the wormhole, seems to have fixed the slowness
+-- yep, it is weird! 

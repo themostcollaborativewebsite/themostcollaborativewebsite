@@ -17,11 +17,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
+}
+
+.home_page {
   height: 100vh;
 }
 
 .colordancing {
-  animation: colordance 20s infinite;
+  animation: colordance 10s infinite;
 }
 
 .page_border {
@@ -34,10 +38,24 @@ body {
   left: 0;
 }
 
+.join_link {
+  font-weight: 600;
+}
+
 
 #wormhole {
   width: 640px;
   height: 360px;
+}
+
+#tail {
+  position: absolute;
+  display: none;
+  user-select: none;
+  cursor: pointer;
+}
+#tail:hover {
+  transition-delay: 1s;
 }
 
 /* This animation gets applied to anything with the class "colordancing". It makes the colors dance. */
@@ -48,4 +66,30 @@ body {
   100% {
     filter: hue-rotate(360deg)
   }
+}
+
+/* Don't know if this is helpful */
+/* i think the top item is display flex, and the contents use flex-grow and flex-shrink */
+/*#chat-container {
+  display: flex;
+  
+}*/
+
+#chat-form {
+  display: block;
+  text-align: center;
+  margin: 10px;
+}
+
+#chat-input {
+  width: 500px;
+}
+
+ul#chats {
+  width: 100%;
+}
+
+li {
+  border-bottom: 0.5px solid #d6d6d6;
+  padding: 3px;
 }
