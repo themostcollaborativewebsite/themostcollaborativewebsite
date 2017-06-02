@@ -60,5 +60,5 @@ $( "#chat-form" ).submit(function(event) {
       console.log("Error:");
       console.log(err);
     }
-  })
+  });
 });

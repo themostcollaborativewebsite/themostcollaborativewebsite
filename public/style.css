@@ -50,7 +50,7 @@ body {
 }
 
 #tail {
-  position: absolute;
+  position: fixed;
   display: none;
   user-select: none;
   cursor: pointer;
@@ -119,4 +119,52 @@ li:hover {
   left: 0;
   height: 5px;
   width: 5px;
+}
+
+
+
+/* AI Chat */
+#bot-container {
+  text-align: center;
+}
+
+#bot-header {
+  font-size: 10rem;
+  margin: 4rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+#bot-header:after {
+  content: '💭';
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+  font-size: 4rem;
+  display: none;
+}
+
+/* ids amiright */
+#bot-header.bot_thinking:after {
+  display: block;
+}
+
+#bot-text {
+  min-height: 2.6rem;
+  background: black;
+  color: #219f21;
+  border-radius: .2rem;
+  font-size: 1.4rem;
+  padding: .5rem;
+}
+
+#voting {
+  margin: 10px;
+}
+
+.voting-button {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 200%;
 }

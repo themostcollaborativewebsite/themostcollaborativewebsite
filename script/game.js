@@ -1,95 +1,78 @@
-var k97 = false;
-var k119 = false;
-var k100 = false;
-var k115 = false;
+var k97 = false; // a
+var k119 = false; // w
+var k100 = false; // d
+var k115 = false; // s
+
 
 $(document).keypress(function( event ) {
+  event.preventDefault();
   console.log("key: " + event.which);
-  if ( event.which == 100 ) {
-    event.preventDefault();
+  if ( event.which == 100 ) {   
     k100 = true;
     k97 = false;
-    moveRight();
+    move("k100", "left", plus, gt);
   }
   if ( event.which == 97 ) {
-    event.preventDefault();
     k97 = true;
     k100 = false;
-    moveLeft();
+    move("k97", "left", minus, lt);
   }
   if ( event.which == 115 ) {
-    event.preventDefault();
     k115 = true;
     k119 = false;
-    moveDown();
+    move("k115", "top", plus, gt);
   }
   if ( event.which == 119 ) {
-    event.preventDefault();
     k119 = true;
     k115 = false;
-    moveUp();
+    move("k119", "top", minus, lt);
   }
 });
 
-// Prob refactor this into a move() function 🐌
-
-
-function moveRight() {
-  if (k100){
-    var left = $( "#game-player" ).css("left");
-    var leftInt = parseInt(left.substring(0, left.indexOf("p")));
-    console.log("left pos: " + leftInt);
-    $( "#game-player" ).css("left", leftInt + 5);
-    if (leftInt > 499){
-      k100 = false;
+function move(key, axis, direction, limit) {
+  console.log("Move: " + axis  + " " + direction);
+  if (isKey(key)){
+    var player = $( "#game-player" );
+    var pos = player.css(axis);
+    var posInt = parseInt(pos.substring(0, pos.indexOf("p")));
+    player.css(axis, direction(posInt));
+    if (limit(posInt)){
+      // Not sure how else to do this, I'm sure there's a better way
+      isKey(key) = false;
     }
     setTimeout(function() {
-      moveRight()
-    }, 100);
-  }  
+      move(key, axis, direction, limit);
+    }, 20);
+  }
 }
 
-function moveLeft() {
-  if (k97){
-    var left = $( "#game-player" ).css("left");
-    var leftInt = parseInt(left.substring(0, left.indexOf("p")));
-    console.log("left pos: " + leftInt);
-    $( "#game-player" ).css("left", leftInt - 5);
-    if (leftInt < 6){
-      k97 = false;
-    }
-    setTimeout(function() {
-      moveLeft()
-    }, 100);
-  }  
+function isKey(key){
+  if (key === "k100"){
+    return k100;
+  }
+  if (key === "k97"){
+    return k97;
+  }
+  if (key === "k115"){
+    return k115;
+  }
+  if (key === "k119"){
+    return k119;
+  }
 }
 
-function moveDown() {
-  if (k115){
-    var top = $( "#game-player" ).css("top");
-    var topInt = parseInt(top.substring(0, top.indexOf("p")));
-    console.log("top pos: " + topInt);
-    $( "#game-player" ).css("top", topInt + 5);
-    if (topInt > 499){
-      k115 = false;
-    }
-    setTimeout(function() {
-      moveDown()
-    }, 100);
-  }  
+function plus(pos){
+  return pos + 1;
 }
 
-function moveUp() {
-  if (k119){
-    var top = $( "#game-player" ).css("top");
-    var topInt = parseInt(top.substring(0, top.indexOf("p")));
-    console.log("top pos: " + topInt);
-    $( "#game-player" ).css("top", topInt - 5);
-    if (topInt < 6){
-      k119 = false;
-    }
-    setTimeout(function() {
-      moveUp()
-    }, 100);
-  }  
+function minus(pos){
+  return pos - 1;
+}
+
+function gt(pos){
+  return pos > 499;
+}
+
+function lt(pos){
+  return pos < 6;
 }

@@ -10,7 +10,8 @@
       "^public/",
       "^chats(-.*)?\\.json$",
       "^dist/",
-      "^chat/"
+      "^chat/",
+      "^script/"
     ],
     "include": [
       "\\.js$",

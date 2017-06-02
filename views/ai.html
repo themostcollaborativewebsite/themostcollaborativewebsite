@@ -10,27 +10,32 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <div id="chat-container"> 
-      <form id="chat-form">
-        @<input id="chat-user" type="text" placeholder="username" width="10">
-        <input id="chat-input" type="text" autofocus>
-        <button id="submit-chat" type="submit">submit</button>
-      </form>
-      <ul id="chats">
-      </ul>
+    <div id="bot-container">
+      
+      <h2 id="bot-header" class="bot_thinking">
+        🤖
+      </h2>
+
+      <div id="bot-text">
+
+      </div>
+      
+      <div id="voting">
+        <button id="nonsense" class="voting-button">
+          😣
+        </button>
+        <button id="sense" class="voting-button">
+          🗣
+        </button>
+      </div>
     </div>
+    
     <div id="tail">✨</div>
 
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
-    <script>
-      window.urls = {
-        postMessage: '/chat/new',
-        getMessages: '/chats'
-      }
-    </script>
-    <script src="/js/client.js"></script>
-    <script src="/js/chat.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/ai.js"></script>
   </body>
 </html>

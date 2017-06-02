@@ -72,12 +72,12 @@ app.post("/chat/beta/new", function (req, res) {
     jsonfile.readFile(__dirname + "/chats-beta.json", function(err, obj) {
       obj.chats.push(chat);
       jsonfile.writeFile(__dirname + "/chats-beta.json", obj, function(err) {
-          if (err){
-            throw err;
-          } else {
-            res.status(200);
-            res.send("OK");
-          }
+        if (err){
+          throw err;
+        } else {
+          res.status(200);
+          res.send("OK");
+        }
       });
     });
   } else {
@@ -91,6 +91,71 @@ app.post("/chat/beta/new", function (req, res) {
 app.get("/game", function (req, res) {
   res.sendFile(__dirname + '/views/game.html');
 });
+
+app.get("/ai", function (req, res) {
+  res.sendFile(__dirname + '/views/ai.html');
+});
+
+app.post("/ai/nonsense", function (req, res){
+  if (req.body.sentence){
+    console.log("Nonsense!: " + req.body.sentence);
+    res.status(200);
+    res.send("OK");
+    var words = sentenceToArray(req.body.sentence);
+    addVote(words);
+  } else {
+    res.status(400);
+    res.send("No sentence");
+  }
+});
+
+app.post("/ai/sense", function (req, res){
+    if (req.body.sentence){
+    console.log("Sense!: " + req.body.sentence);
+    res.status(200);
+    res.send("OK");
+    var words = sentenceToArray(req.body.sentence);
+    addVote(words);
+  } else {
+    res.status(400);
+    res.send("No sentence");
+  }
+});
+
+function sentenceToArray(sentence){
+  var sentenceArray = sentence.split(/(\s+)/);
+  return sentenceArray.filter(function(e) { return e !== ' ' });
+}
+
+
+function addVote(words){
+  for (var i = 0; i < words.length - 1; i++){
+    console.log(words);
+    var pair = [words[i], words[i + 1]];
+    // Do something with pair of words?
+    jsonfile.readFile(__dirname + "/data/ai.json", function(err, obj) {
+      if (obj.words[pair[0]]){
+        if (obj.words[pair[0]][pair[1]]){
+          obj.words[pair[0]][pair[1]] += 1;
+        } else {
+          obj.words[pair[0]][pair[1]] = 1;
+        }
+      } else {
+        obj.words[pair[0]] = {};
+        obj.words[pair[0]][pair[1]] = 1;
+      }
+      console.log(obj);
+      jsonfile.writeFile(__dirname + "/data/ai.json", obj, function(err) {
+        if (err){
+          throw err;
+        } else {
+        }
+      });
+    });
+    
+  }
+}
+
 
 
 // listen for requests :)
