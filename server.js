@@ -101,8 +101,8 @@ app.post("/ai/nonsense", function (req, res){
     console.log("Nonsense!: " + req.body.sentence);
     res.status(200);
     res.send("OK");
-    var words = sentenceToArray(req.body.sentence);
-    addVote(words);
+    var wordArray = sentenceToArray(req.body.sentence);
+    vote(wordArray, -1);
   } else {
     res.status(400);
     res.send("No sentence");
@@ -114,8 +114,8 @@ app.post("/ai/sense", function (req, res){
     console.log("Sense!: " + req.body.sentence);
     res.status(200);
     res.send("OK");
-    var words = sentenceToArray(req.body.sentence);
-    addVote(words);
+    var wordArray = sentenceToArray(req.body.sentence);
+    vote(wordArray, 1);
   } else {
     res.status(400);
     res.send("No sentence");
@@ -128,33 +128,45 @@ function sentenceToArray(sentence){
 }
 
 
-function addVote(words){
-  for (var i = 0; i < words.length - 1; i++){
-    console.log(words);
-    var pair = [words[i], words[i + 1]];
-    // Do something with pair of words?
+
+// This isn't working because the last pair gets sent every time, forget how to fix for now
+function vote(wordArray, direction){
+  var index = 0;
+  (function votePair(wordArray, direction, i){
     jsonfile.readFile(__dirname + "/data/ai.json", function(err, obj) {
-      if (obj.words[pair[0]]){
-        if (obj.words[pair[0]][pair[1]]){
-          obj.words[pair[0]][pair[1]] += 1;
+      if (obj.words[wordArray[i]]){
+        if (obj.words[wordArray[i]][wordArray[i + 1]]){
+          obj.words[wordArray[i]][wordArray[i + 1]] += direction;
         } else {
-          obj.words[pair[0]][pair[1]] = 1;
+          obj.words[wordArray[i]][wordArray[i + 1]] = direction;
         }
       } else {
-        obj.words[pair[0]] = {};
-        obj.words[pair[0]][pair[1]] = 1;
+        obj.words[wordArray[i]] = {};
+        obj.words[wordArray[i]][wordArray[i + 1]] = direction;
+      }
+      if (obj.words[wordArray[i]][wordArray[i + 1]] < 0){
+        obj.words[wordArray[i]][wordArray[i + 1]] = 0;
       }
       console.log(obj);
       jsonfile.writeFile(__dirname + "/data/ai.json", obj, function(err) {
         if (err){
-          throw err;
+          //throw err;
+          console.log("JSON write error");
         } else {
+          console.log("JSON write success");
+          i += 1;
+          if (i < wordArray.length - 1){
+            votePair(wordArray, direction, i);
+          }
         }
       });
     });
-    
-  }
+  })(wordArray, direction, index);
 }
+
+app.get("/data/ai", function (req, res) {
+  res.sendFile(__dirname + "/data/ai.json");
+});
 
 
 

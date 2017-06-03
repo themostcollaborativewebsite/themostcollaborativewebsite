@@ -69,6 +69,7 @@ body {
   }
 }
 
+/* People Chat */
 /* Don't know if this is helpful */
 /* i think the top item is display flex, and the contents use flex-grow and flex-shrink */
 /*#chat-container {
@@ -88,14 +89,23 @@ body {
 
 ul#chats {
   width: 100%;
+  list-style-type: none;  
+  margin: 0;
+  padding: .5rem;
+  /*  bold width I know so maybe this will need to change  */
+  max-width: 68rem;
 }
 
-li {
+#chats li {
   border-bottom: 0.5px solid #d6d6d6;
-  padding: 3px;
+  padding: .5rem;
 }
 
-li:hover {
+#chats li:nth-child(even) {
+  background-color: #eee;
+}
+
+#chats li:hover {
   background-color: #fef4ff;
 }
 
